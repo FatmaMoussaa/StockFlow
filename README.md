@@ -41,7 +41,7 @@ Dependencies only go one way: `view` -> `controller` -> `model` / `util`. No low
 | Layer          | Technology                          |
 |----------------|-------------------------------------|
 | Language       | Java                                |
-| UI             | Java Swing                          |
+| UI             | JavaFX                              |
 | Database       | PostgreSQL                          |
 | Data access    | JDBC (PostgreSQL driver)            |
 | IDE            | IntelliJ IDEA                       |
@@ -52,6 +52,7 @@ Dependencies only go one way: `view` -> `controller` -> `model` / `util`. No low
 
 - JDK 17 or later
 - PostgreSQL 13 or later
+- The [JavaFX SDK](https://openjfx.io/) (JavaFX is no longer bundled with the JDK)
 - The [PostgreSQL JDBC driver](https://jdbc.postgresql.org/) added to the project libraries
 
 ### 1. Clone the repository
@@ -91,10 +92,16 @@ db.password=your_password
 
 ### 4. Run the application
 
-Open the project in IntelliJ IDEA, make sure the PostgreSQL driver is on the classpath, and run:
+Open the project in IntelliJ IDEA, make sure the PostgreSQL driver and the JavaFX SDK are added to the project libraries, and run:
 
 ```
 src/view/Main.java
+```
+
+If IntelliJ reports missing JavaFX runtime components, add these VM options in the run configuration (replace the path with your JavaFX SDK `lib` folder):
+
+```
+--module-path "C:\path\to\javafx-sdk\lib" --add-modules javafx.controls,javafx.fxml
 ```
 
 To check the database connection on its own, run `src/util/TestConnection.java`.
